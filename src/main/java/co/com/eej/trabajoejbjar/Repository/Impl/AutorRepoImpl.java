@@ -40,4 +40,9 @@ public class AutorRepoImpl implements IAutor{
         this.em.remove(obj);
     }
     
+    public List<Autor> llamarVista(){
+        TypedQuery<Autor> query = em.createNamedQuery("Autor.ListarTodos", Autor.class);
+        return query.getResultList();
+    }
+    
 }

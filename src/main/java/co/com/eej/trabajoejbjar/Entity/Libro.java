@@ -20,7 +20,7 @@ public class Libro implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;   
     
-    @Column(name = "nombre", nullable = false, length = 30)
+    @Column(name = "nombre_libro", nullable = false, length = 30)
     private String nombre;     
     
     @Column(name = "descripcion", nullable = false, length = 200)

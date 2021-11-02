@@ -1,26 +1,21 @@
 package co.com.eej.trabajoejbjar.Entity;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "autor")
-
+@Table(name = "v_autor")
 @NamedQueries({
-    @NamedQuery(name = "Autor.ListarTodos", query = "SELECT a FROM Autor a")
+    @NamedQuery(name = "VistaAutor.ListarTodos", query = "SELECT a FROM v_autor a")
 })
-public class Autor implements Serializable{
+public class VistaAutor implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,24 +31,34 @@ public class Autor implements Serializable{
     private String apellido;    
     
     @Column(name = "edad", nullable = false)
-    private Integer edad;   
+    private Integer edad;
     
-    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY, cascade= CascadeType.ALL, orphanRemoval = true)
-    private List<Libro> libro;
+    @Column(name = "id_libro", nullable = false)
+    private Integer idLibro;
     
-    public Autor(){
+    @Column(name = "nombre_libro", nullable = false)
+    private String NombreLibro;
     
+    @Column(name = "descripcion", nullable = false)
+    private String descripcion;
+    
+    @Column(name = "no_paginas", nullable = false)
+    private Integer noPaginas;
+
+    public VistaAutor() {
     }
 
-    public Autor(String identificacion, String nombre, String apellido, Integer edad, List<Libro> libro) {
+    public VistaAutor(Integer id, String identificacion, String nombre, String apellido, Integer edad, Integer idLibro, String NombreLibro, String descripcion, Integer noPaginas) {
+        this.id = id;
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-        this.libro = libro;
+        this.idLibro = idLibro;
+        this.NombreLibro = NombreLibro;
+        this.descripcion = descripcion;
+        this.noPaginas = noPaginas;
     }
-    
-    
 
     public Integer getId() {
         return id;
@@ -95,12 +100,37 @@ public class Autor implements Serializable{
         this.edad = edad;
     }
 
-    public List<Libro> getLibro() {
-        return libro;
+    public Integer getIdLibro() {
+        return idLibro;
     }
 
-    public void setLibro(List<Libro> libro) {
-        this.libro = libro;
+    public void setIdLibro(Integer idLibro) {
+        this.idLibro = idLibro;
     }
+
+    public String getNombreLibro() {
+        return NombreLibro;
+    }
+
+    public void setNombreLibro(String NombreLibro) {
+        this.NombreLibro = NombreLibro;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getNoPaginas() {
+        return noPaginas;
+    }
+
+    public void setNoPaginas(Integer noPaginas) {
+        this.noPaginas = noPaginas;
+    }
+    
     
 }

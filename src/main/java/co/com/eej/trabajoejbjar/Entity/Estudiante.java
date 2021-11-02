@@ -1,7 +1,6 @@
 package co.com.eej.trabajoejbjar.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
